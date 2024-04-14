@@ -1,0 +1,34 @@
+#game-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+}
+
+.card {
+    width: 100px;
+    height: 150px;
+    margin: 10px;
+    background-color: white;
+    border: 1px solid #ccc;
+    transition: transform 1s; 
+    transform-style: preserve-3d; 
+    cursor: pointer;
+}
+
+.card.flipped {
+    background-color: #ffcc00;
+}
+
+.card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card .back {
+    transform: rotateY(180deg); /* 카드 뒷면이 뒤집히도록 설정합니다. */
+}
+

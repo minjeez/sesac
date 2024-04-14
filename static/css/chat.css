@@ -1,0 +1,109 @@
+.site-navbar .site-navbar-top {
+    border-bottom: 1px solid #f3f3f4;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-bottom: 0px;
+}
+
+.sender-image {
+    width: 40px; /* 이미지 크기 조정 */
+    height: 40px; /* 이미지 크기 조정 */
+    border-radius: 20px; /* 이미지를 원형으로 만듬 */
+    margin-right: 10px; /* 이미지와 텍스트 사이의 간격 조정 */
+}
+
+.right-sender, .right-time {
+    text-align: right;
+}
+
+.left-sender, .left-time {
+    text-align: left;
+}
+
+/* 메시지 컨테이너 내 요소들의 정렬을 위한 스타일 */
+.right-bubble, .left-bubble {
+    display: flex;
+    flex-direction: column;
+}
+
+/* 발신자 이름과 시간을 메시지 본문과 같은 라인에 표시하기 위한 스타일 */
+.right-bubble > .sender-image, .right-bubble > .sender-element, .left-bubble > .sender-image, .left-bubble > .sender-element {
+    display: inline-block;
+}
+
+.container {
+    display: flex;
+    align-items: flex-start;
+    width: 100%; 
+}
+
+
+.taro-image {
+    width: 100%; 
+    margin: 50px auto;
+    padding: 20px;
+    /* border: 1px solid #ccc; */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.chat-container {
+    width: 100%; /* 채팅창 크기 조절 */
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.chat-messages {
+    height: 400px;
+    overflow-y: scroll;
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 10px;
+    display: flex; /* 말풍선들을 세로로 나열하기 위해 flex 속성 추가 */
+    flex-direction: column; /* 말풍선들을 세로로 나열하기 위해 column 방향으로 지정 */
+}
+
+.left-bubble,
+.right-bubble {
+    max-width: 70%; /* 말풍선 최대 너비 지정 */
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 5px;
+}
+
+.left-bubble {
+    background-color: #f1f0f0; /* 왼쪽 말풍선 배경색 */
+    color: #000; /* 왼쪽 말풍선 글자색 */
+    align-self: flex-start; /* 왼쪽 말풍선을 왼쪽으로 정렬 */
+}
+
+.right-bubble {
+    background-color: #aa86b3; /* 오른쪽 말풍선 배경색 */
+    color: #fff; /* 오른쪽 말풍선 글자색 */
+    align-self: flex-end; /* 오른쪽 말풍선을 오른쪽으로 정렬 */
+}
+
+.message-input-container {
+    display: flex;
+    align-items: center; /* 아이콘을 세로로 중앙 정렬 */
+}
+
+#message-input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc; /* 입력 칸 테두리 색상 */
+    border-radius: 5px;
+}
+
+#send-button {
+    padding: 10px 20px;
+    margin-left: 10px;
+    background-color: #aa86b3; /* 전송 버튼 배경색 */
+    color: #fff; /* 전송 버튼 글자색 */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
