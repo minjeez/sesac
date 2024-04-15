@@ -1,123 +1,123 @@
-from fastapi import APIRouter, WebSocket, WebSocketDisconnect
-from pydantic import BaseModel
-from typing import List
-from model import model_chat
-
-import json
-
-
-router = APIRouter()
-
-class ConnectionManager:
-    def __init__(self):
-        self.active_connections: List[WebSocket] = []
-    
-    async def connect(self, websocket: WebSocket):
-        await websocket.accept()
-        self.active_connections.append(websocket)
-    
-    async def disconnect(self, websocket: WebSocket):
-        self.active_connections.remove(websocket)
-    
-    async def send_personal_message(self, message: str, websocket: WebSocket):
-        await websocket.send_json(message)
-    
-    async def broadcast(self, message: str):
-        for connection in self.active_connections:
-            await connection.send_json(message)
-            
-
-manager = ConnectionManager()
-
-class CardInfo(BaseModel):
-    cardPath: str
-
-@router.post("/card-path")
-async def receive_card_info(card_info: CardInfo):
-    print(f"Received card 경로 \n{card_info.cardPath}")
-    
-    data = {"imgPath" : card_info.cardPath}
-    json_data = json.dumps(data)
-    # JSON 데이터를 파일에 저장
-    with open("./static/imgPath.json", "w") as f:
-        f.write(json_data)
-
-    await manager.broadcast({"message": card_info.cardPath, "sender": "시스템", "time": ""})
-    return CardInfo(cardPath=card_info.cardPath)
-
-
-@router.websocket('/chatting')
-async def websocket_chatting(websocket: WebSocket):
-    await manager.connect(websocket) 
-    try:
-        while True:
-            data = await websocket.receive_json()  # JSON 형태로 메시지 받기
-            print(f"JS to PY data : {data}")
-            message = data["message"]
-            time = data.get("time", "")
-            sender = data.get("sender", "나")
-            # print(f"data : \nmsg : {message}\ntime : {time}\nsender : {sender}")
-            
-            print(f"{sender}의 질문 : {message}")
-            await manager.send_personal_message({"message": message, "sender": "나", "time": time}, websocket)
-            
-            celebrity = ["아이유", "차은우", "춘식이"]
-            reply = model_chat.answer2you(message, celebrity[0])
-
-            await manager.send_personal_message({"message": reply, "sender": celebrity[0], "time": time}, websocket)
-
-    except WebSocketDisconnect:
-        manager.disconnect(websocket)
-        print("WebSocket disconnected")
-
-
-
-
-# from fastapi import APIRouter, WebSocket, WebSocketDisconnect, HTTPException
-# from model import model_chat
+# from fastapi import APIRouter, WebSocket, WebSocketDisconnect
 # from pydantic import BaseModel
+# from typing import List
+# from model import model_chat
+
+# import json
+
 
 # router = APIRouter()
 
-# # 카드 정보를 받기 위한 Pydantic 모델
+# class ConnectionManager:
+#     def __init__(self):
+#         self.active_connections: List[WebSocket] = []
+    
+#     async def connect(self, websocket: WebSocket):
+#         await websocket.accept()
+#         self.active_connections.append(websocket)
+    
+#     async def disconnect(self, websocket: WebSocket):
+#         self.active_connections.remove(websocket)
+    
+#     async def send_personal_message(self, message: str, websocket: WebSocket):
+#         await websocket.send_json(message)
+    
+#     async def broadcast(self, message: str):
+#         for connection in self.active_connections:
+#             await connection.send_json(message)
+            
+
+# manager = ConnectionManager()
+
 # class CardInfo(BaseModel):
 #     cardPath: str
 
-# # 카드 정보를 받는 엔드포인트
-# @router.post("/send-card-info")
-# async def receive_card_info(card_info: CardInfo): # , websocket: WebSocket = None
-#     # 카드 정보 처리
-#     # 예: 데이터베이스에 저장, 로그 출력 등
-#     print(f"Received card info: \n{card_info.cardPath}")
-#     # client_id = "arcana"
-#     return {"message": "Card info received successfully"}
+# @router.post("/card-path")
+# async def receive_card_info(card_info: CardInfo):
+#     print(f"Received card 경로 \n{card_info.cardPath}")
+    
+#     data = {"imgPath" : card_info.cardPath}
+#     json_data = json.dumps(data)
+#     # JSON 데이터를 파일에 저장
+#     with open("./static/imgPath.json", "w") as f:
+#         f.write(json_data)
+
+#     await manager.broadcast({"message": card_info.cardPath, "sender": "시스템", "time": ""})
+#     return CardInfo(cardPath=card_info.cardPath)
+
 
 # @router.websocket('/chatting')
 # async def websocket_chatting(websocket: WebSocket):
-#     await websocket.accept()
+#     await manager.connect(websocket) 
 #     try:
 #         while True:
-#             data = await websocket.receive_json()
-#             print(data)
+#             data = await websocket.receive_json()  # JSON 형태로 메시지 받기
+#             print(f"JS to PY data : {data}")
 #             message = data["message"]
-#             time = data.get("time", "")  # 클라이언트에서 보낸 시간 정보를 가져옵니다.
-#             sender = data.get("sender", "나")  # 클라이언트에서 보낸 발신자 정보를 가져옵니다.
+#             time = data.get("time", "")
+#             sender = data.get("sender", "나")
+#             # print(f"data : \nmsg : {message}\ntime : {time}\nsender : {sender}")
             
 #             print(f"{sender}의 질문 : {message}")
-#             await websocket.send_json({"message": message, "sender": "나", "time": time})
-
-#             # 모델을 사용하여 챗봇 응답 생성
+#             await manager.send_personal_message({"message": message, "sender": "나", "time": time}, websocket)
+            
 #             celebrity = ["아이유", "차은우", "춘식이"]
 #             reply = model_chat.answer2you(message, celebrity[0])
-            
-#             # print(f"챗봇의 대답 : {reply}")
-            
-#             # 클라이언트로 사용자의 메시지와 챗봇의 응답을 전송
-            
-#             await websocket.send_json({"message": reply, "sender": celebrity[0], "time": time})
+
+#             await manager.send_personal_message({"message": reply, "sender": celebrity[0], "time": time}, websocket)
 
 #     except WebSocketDisconnect:
-#         print("webSocket dissconnet 입니다.")
+#         manager.disconnect(websocket)
+#         print("WebSocket disconnected")
+
+
+
+
+from fastapi import APIRouter, WebSocket, WebSocketDisconnect, HTTPException
+from model import model_chat
+from pydantic import BaseModel
+
+router = APIRouter()
+
+# 카드 정보를 받기 위한 Pydantic 모델
+class CardInfo(BaseModel):
+    cardPath: str
+
+# 카드 정보를 받는 엔드포인트
+@router.post("/send-card-info")
+async def receive_card_info(card_info: CardInfo): # , websocket: WebSocket = None
+    # 카드 정보 처리
+    # 예: 데이터베이스에 저장, 로그 출력 등
+    print(f"Received card info: \n{card_info.cardPath}")
+    # client_id = "arcana"
+    return {"message": "Card info received successfully"}
+
+@router.websocket('/chatting')
+async def websocket_chatting(websocket: WebSocket):
+    await websocket.accept()
+    try:
+        while True:
+            data = await websocket.receive_json()
+            print(data)
+            message = data["message"]
+            time = data.get("time", "")  # 클라이언트에서 보낸 시간 정보를 가져옵니다.
+            sender = data.get("sender", "나")  # 클라이언트에서 보낸 발신자 정보를 가져옵니다.
+            
+            print(f"{sender}의 질문 : {message}")
+            await websocket.send_json({"message": message, "sender": "나", "time": time})
+
+            # 모델을 사용하여 챗봇 응답 생성
+            celebrity = ["아이유", "차은우", "춘식이"]
+            reply = model_chat.answer2you(message, celebrity[0])
+            
+            # print(f"챗봇의 대답 : {reply}")
+            
+            # 클라이언트로 사용자의 메시지와 챗봇의 응답을 전송
+            
+            await websocket.send_json({"message": reply, "sender": celebrity[0], "time": time})
+
+    except WebSocketDisconnect:
+        print("webSocket dissconnet 입니다.")
 
 
 
