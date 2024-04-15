@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="kr">
 
 <head>
   <title>Taro Arcana</title>
@@ -20,9 +20,10 @@
 
   <link rel="stylesheet" href="../static/css/aos.css">
   <link rel="stylesheet" href="../static/css/style.css">
+  <link rel="stylesheet" href="../static/css/selectmodel.css">
 
-  <link rel="stylesheet" href="../static/css/chat.css">
-  <script src="../static/js/chat.js"></script>
+  <script src="../static/js/select.js"></script>
+
 </head>
 
 <body>
@@ -97,49 +98,73 @@
       </nav>
     </header>
 
-
-    <body>
-      
-          <div class="container">
-            <div class="taro-container">
-              <div class="taro-overlay"></div>
-              <!-- <div class="taro-img">
-
-              </div> -->
-              <img class="taro-image" src="../static/taro-img/devil.png" alt="taro Image">
-            </div>
-            <div class="chat-container">
-              <div class="chat-messages" id="chat-messages">
-                <!-- Messages will be displayed here -->
-              
+    <div class="site-section block-3 site-blocks-2 bg-light">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-7 site-section-heading text-center pt-4">
+            <h2><b>원하는 상대를 골라주세요</b></h2>
+          </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 mb-4"></div>
+            
+          <div class="col-md-12">
+            <div class="nonloop-block-3 owl-carousel">
+              <div class="item">
+                <div class="block-4 text-center">
+                  <figure class="block-4-image">
+                    <img src="../static/images/model_1.jpg" alt="Image placeholder" class="img-fluid">
+                  </figure>
+                  <div class="block-4-text p-4">
+                    <h3><a href="#"><b>아이유</b></a></h3>
+                    <p class="mb-0">-</p>
+                    <p class="text-primary font-weight-bold">✨ 5.0/5.0 | 후기 5,830개</p>
+                  </div>
+                </div>
               </div>
-              <div class="message-input-container">
-                <input type="text" id="message-input" placeholder="Type your message...">
-                <button id="send-button">Send</button>
+              <div class="item">
+                <div class="block-4 text-center">
+                  <figure class="block-4-image">
+                    <img src="../static/images/model_2.jpg" alt="Image placeholder" class="img-fluid">
+                  </figure>
+                  <div class="block-4-text p-4">
+                    <h3><a href="#"><b>차은우</
+                    </b></a></h3>
+                    <p class="mb-0">-</p>
+                    <p class="text-primary font-weight-bold">✨ 5.0/5.0 | 후기 4,030개</p>
+                  </div>
+                </div>
               </div>
+              <div class="item">
+                <div class="block-4 text-center">
+                  <figure class="block-4-image">
+                    <img src="../static/images/model_3.jpg" alt="Image placeholder" class="img-fluid">
+                  </figure>
+                  <div class="block-4-text p-4">
+                    <h3><a href="#"><b>춘식이</b></a></h3>
+                    <p class="mb-0">-</p>
+                    <p class="text-primary font-weight-bold">✨ 5.0/5.0 | 후기 3,911개</p>
+                  </div>
+                </div>
+              </div>    
             </div>
           </div>
-        
-    </body>
-    
-    <script>
-      var taroContainer = document.querySelector('.taro-container')
-      var taroOverlay = document.querySelector('.taro-overlay')
+        </div>
+      </div>
+    </div>
 
-      taroContainer.addEventListener('mousemove', function(e){
-          var x = e.offsetX
-          var y = e.offsetY
-          var rotateY = -1/5 * x + 20
-          var rotateX = 4/30 * y - 20
+  </div>
 
-          taroOverlay.style = `background-position : ${x/5 + y/5}%; filter : opacity(${x/200}) brightness(1.2)`
+  <script src="../static/js/jquery-3.3.1.min.js"></script>
+  <script src="../static/js/jquery-ui.js"></script>
+  <script src="../static/js/popper.min.js"></script>
+  <script src="../static/js/bootstrap.min.js"></script>
+  <script src="../static/js/owl.carousel.min.js"></script>
+  <script src="../static/js/jquery.magnific-popup.min.js"></script>
+  <script src="../static/js/aos.js"></script>
 
-          taroContainer.style = `transform : perspective(350px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`
-      })
+  <script src="../static/js/main.js"></script>
 
-      taroContainer.addEventListener('mouseout', function(){
-        taroOverlay.style = 'filter : opacity(0)'
-          taroContainer.style = 'transform : perspective(350px) rotateY(0deg) rotateX(0deg)'
-      })
-    </script>
+</body>
+
 </html>
