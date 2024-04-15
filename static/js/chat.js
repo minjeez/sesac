@@ -7,28 +7,28 @@ document.addEventListener('DOMContentLoaded', function() {
     // 웹소켓 연결 생성
     var ws = new WebSocket(`ws://${document.domain}:${location.port}/chatting`);
 
-    fetch('/card-path', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        else {console.log("hi");}
-        return response.json(); // JSON 형식으로 변환
-    })
-    .then(data => {
-        const taroImgContainer = document.querySelector('.taro-img');
-        taroImgContainer.innerHTML = '';
-        console.log(data);
-        const img = document.createElement('img');
-        img.src = data.cardPath; // JSON에서 불러온 imgPath 값을 사용
-        taroImgContainer.appendChild(img);
-    })
-    .catch(error => console.error('Error:', error));
+    // fetch('/card-path', {
+    //     method: 'POST',
+    //     headers: {
+    //         'Content-Type': 'application/json'
+    //     }
+    // })
+    // .then(response => {
+    //     if (!response.ok) {
+    //         throw new Error('Network response was not ok');
+    //     }
+    //     else {console.log("hi");}
+    //     return response.json(); // JSON 형식으로 변환
+    // })
+    // .then(data => {
+    //     const taroImgContainer = document.querySelector('.taro-img');
+    //     taroImgContainer.innerHTML = '';
+    //     console.log(data);
+    //     const img = document.createElement('img');
+    //     img.src = data.cardPath; // JSON에서 불러온 imgPath 값을 사용
+    //     taroImgContainer.appendChild(img);
+    // })
+    // .catch(error => console.error('Error:', error));
     
     
     // 서버에서 메시지를 받을 때 처리

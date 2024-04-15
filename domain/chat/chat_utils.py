@@ -76,6 +76,7 @@
 from fastapi import APIRouter, WebSocket, WebSocketDisconnect, HTTPException
 from model import model_chat
 from pydantic import BaseModel
+import json
 
 router = APIRouter()
 
@@ -84,11 +85,16 @@ class CardInfo(BaseModel):
     cardPath: str
 
 # 카드 정보를 받는 엔드포인트
-@router.post("/send-card-info")
+@router.post("/card-path")
 async def receive_card_info(card_info: CardInfo): # , websocket: WebSocket = None
     # 카드 정보 처리
     # 예: 데이터베이스에 저장, 로그 출력 등
     print(f"Received card info: \n{card_info.cardPath}")
+    data = {"imgPath" : card_info.cardPath}
+    json_data = json.dumps(data)
+    # JSON 데이터를 파일에 저장
+    with open("./static/imgPath.json", "w") as f:
+        f.write(json_data)
     # client_id = "arcana"
     return {"message": "Card info received successfully"}
 
