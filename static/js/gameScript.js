@@ -1,3 +1,4 @@
+// selecting card feature
 document.addEventListener('DOMContentLoaded', function () {
     const basePath = '../static/taro-img/';
     const cards = [
@@ -46,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function () {
         var cardBack = document.createElement('img');
         cardBack.src = basePath + 'back.png'; // Path to card back image
         newCard.appendChild(cardBack);
-        
+
         gameContainer.appendChild(newCard);
         // newCard.addEventListener('click', () => flipCard(newCard, cardPath));
         newCard.addEventListener('click', () => {
@@ -78,7 +79,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const cardFront = document.createElement('img');
         cardFront.src = imagePath; // Display the front of the card
         cardElement.appendChild(cardFront);
-        
+
         // 카드 선택 후 카드 정보 chat_utils.py로 보내기.
         // console.log(imagePath);
         // WebSocket.send(JSON.stringify({"type": "img_path", imagePath: imagePath}));
@@ -92,7 +93,40 @@ document.addEventListener('DOMContentLoaded', function () {
                 // client_id: "arcana"
             })
         })
-        
+
     }
-    
+
 });
+document.addEventListener('DOMContentLoaded', () => {
+    // Retrieve the model from the query parameter
+    const urlParams = new URLSearchParams(window.location.search);
+    const selectedModel = urlParams.get('model');
+
+    if (selectedModel) {
+        // Store the selected model in sessionStorage
+        sessionStorage.setItem('selectedModel', selectedModel);
+
+        // Play the corresponding voice based on the selected model
+        switch (selectedModel) {
+            case 'iu':
+                playVoice('../static/voices/iu_card.mp3');
+                break;
+            case 'cha':
+                playVoice('../static/voices/cha_card.mp3');
+                break;
+            case 'chunsik':
+                playVoice('../static/voices/liam_guruguru.mp3');
+                break;
+            default:
+                console.error('Invalid model selected.');
+        }
+    } else {
+        console.error('No model selected.');
+    }
+});
+
+function playVoice(voicePath) {
+    // Implement your code to play the voice
+    const audio = new Audio(voicePath);
+    audio.play();
+}

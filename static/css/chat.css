@@ -81,7 +81,7 @@
 }
 
 .right-bubble {
-    background-color: #898fb3; /* 오른쪽 말풍선 배경색 */
+    background-color: #979dc2; /* 오른쪽 말풍선 배경색 */
     color: #fff; /* 오른쪽 말풍선 글자색 */
     align-self: flex-end; /* 오른쪽 말풍선을 오른쪽으로 정렬 */
 }
@@ -101,7 +101,7 @@
 #send-button {
     padding: 10px 20px;
     margin-left: 10px;
-    background-color: #898fb3; /* 전송 버튼 배경색 */
+    background-color: #979dc2; /* 전송 버튼 배경색 */
     color: #fff; /* 전송 버튼 글자색 */
     border: none;
     border-radius: 5px;

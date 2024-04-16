@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>Taro Arcana</title>
+  <title>Studio Arcana</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -78,7 +78,7 @@
                   <a href="#">챗봇 아르카나</a>
                   <ul class="dropdown">
                     <li><a href="#">소개</a></li>
-                    <li><a href="/chat">대화하기</a></li>
+                    <li><a href="/selectmodel">대화하기</a></li>
                   </ul>
                 </li>
               </ul>
@@ -99,47 +99,48 @@
 
 
     <body>
-      
-          <div class="container">
-            <div class="taro-container">
-              <div class="taro-overlay"></div>
-              <!-- <div class="taro-img">
+
+      <div class="container">
+        <div class="taro-container">
+          <div class="taro-overlay"></div>
+          <!-- <div class="taro-img">
 
               </div> -->
-              <img class="taro-image" src="../static/taro-img/devil.png" alt="taro Image">
-            </div>
-            <div class="chat-container">
-              <div class="chat-messages" id="chat-messages">
-                <!-- Messages will be displayed here -->
-              
-              </div>
-              <div class="message-input-container">
-                <input type="text" id="message-input" placeholder="Type your message...">
-                <button id="send-button">Send</button>
-              </div>
-            </div>
+          <img class="taro-image" src="../static/taro-img/devil.png" alt="taro Image">
+        </div>
+        <div class="chat-container">
+          <div class="chat-messages" id="chat-messages">
+            <!-- Messages will be displayed here -->
+
           </div>
-        
+          <div class="message-input-container">
+            <input type="text" id="message-input" placeholder="Type your message...">
+            <button id="send-button">Send</button>
+          </div>
+        </div>
+      </div>
+
     </body>
-    
+
     <script>
       var taroContainer = document.querySelector('.taro-container')
       var taroOverlay = document.querySelector('.taro-overlay')
 
-      taroContainer.addEventListener('mousemove', function(e){
-          var x = e.offsetX
-          var y = e.offsetY
-          var rotateY = -1/5 * x + 20
-          var rotateX = 4/30 * y - 20
+      taroContainer.addEventListener('mousemove', function (e) {
+        var x = e.offsetX
+        var y = e.offsetY
+        var rotateY = -1 / 5 * x + 20
+        var rotateX = 4 / 30 * y - 20
 
-          taroOverlay.style = `background-position : ${x/5 + y/5}%; filter : opacity(${x/200}) brightness(1.2)`
+        taroOverlay.style = `background-position : ${x / 5 + y / 5}%; filter : opacity(${x / 200}) brightness(1.2)`
 
-          taroContainer.style = `transform : perspective(350px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`
+        taroContainer.style = `transform : perspective(350px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`
       })
 
-      taroContainer.addEventListener('mouseout', function(){
+      taroContainer.addEventListener('mouseout', function () {
         taroOverlay.style = 'filter : opacity(0)'
-          taroContainer.style = 'transform : perspective(350px) rotateY(0deg) rotateX(0deg)'
+        taroContainer.style = 'transform : perspective(350px) rotateY(0deg) rotateX(0deg)'
       })
     </script>
+
 </html>

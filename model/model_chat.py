@@ -88,15 +88,6 @@ def answer2you(input_message, celebrity):
     result = chain.invoke(input_message)
     print(f"result : {type(result)}\n내용 : {result}")
     return result.content
-##############
-# 고른 카드 저장
-# def seletec_card_answer2you(seleted_card):
-#     if seleted_card:
-#         msg = f"{seleted_card} 타로 카드의 정보를 알려줘!"
-#         llm = ChatOpenAI(model_name=celebrity_chatbot[celebrity], temperature=0.2,  
-#                         streaming=True)
-#         answer = llm.predict(msg)
-#     return answer
 
 
 #################
