@@ -3,8 +3,8 @@ from pydantic import BaseModel, EmailStr, constr, validator
 from typing import Optional
 
 class SubscriptionCreate(BaseModel):
+    name: constr(min_length=1, max_length=50)# 최소 1자 이상, 최대 50자 이하여야 함
     email: EmailStr
-    name: constr(min_length=1, max_length=50) # 최소 1자 이상, 최대 50자 이하여야 함
     age: constr(max_length=10)
     gender: constr(pattern=r'^[남여]$') # 선택 사항이므로 추가적인 유효성 검사 규칙이 없음
     favorite_celebrity: Optional[str] = None

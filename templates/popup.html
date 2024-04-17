@@ -6,44 +6,58 @@
     <title>Subscribe</title>
     <link rel="stylesheet" href="../static/css/popup.css"> <!-- CSS 파일 링크 -->
 </head>
+
 <body>
 
     <div class="popup">
         <div class="popup-content">
-            <h2>사용자 정보 입력</h2>
-            <p></p> <!-- 공백 줄 추가 -->
-            <p></p>
-            <label for="name">이름</label><br>
-            <input type="text" id="name" name="name"><br>
-            <!-- 이메일 입력 -->
-            <label for="email">이메일</label>
-            <input type="email" id="email" name="email" required><br>
+            <h2>정보를 입력해주세요.</h2>
+            
+            <div class="separator"></div> <!-- 회색 줄 추가 -->
+                
+                <div class="info-input"> <!-- 사용자 정보 입력 영역 -->
+                    <form action="#" method="post" id="subscriptionForm">
+                        <label for="name"><b>이름</b></label>
+                        <input type="text" id="name" name="name"><br>
+                        <!-- 이메일 입력 -->
+                        <label for="email"><b>이메일</b></label>
+                        <input type="email" id="email" name="email" required><br>
 
-            <!-- 나이 선택 -->
-            <label for="age">나이</label>
-            <select id="age" name="age">
-                <option value="10">10대</option>
-                <option value="20">20대</option>
-                <option value="30">30대</option>
-                <option value="40">40대</option>
-                <option value="50">50대 이상</option>
-            </select><br>
+                        <!-- 나이 선택 -->
+                        <label for="age"><b>나이</b></label>
+                        <select id="age" name="age">
+                            <option value="10대 미만">10대 미만</option>
+                            <option value="10대">10대</option>
+                            <option value="20대">20대</option>
+                            <option value="30대">30대</option>
+                            <option value="40대">40대</option>
+                            <option value="50대 이상">50대 이상</option>
+                        </select><br>
 
-            <!-- 성별 선택 -->
-            <div class="gender-selection">
-                <label for="gender">성별</label>
-                <input type="radio" id="male" name="gender" value="male">
-                <label for="male">남성</label>
-                <input type="radio" id="female" name="gender" value="female">
-                <label for="female">여성</label><br>
+                        <!-- 성별 선택 -->
+                        <div class="gender-selection">
+                            
+                            <label for="gender"><b>성별</b></label>
+                            <select id="gender" name="gender">
+                                <option value="">성별 선택</option>
+                                <option value="남">남</option>
+                                <option value="여">여</option>
+                            </select><br>
+                            <!-- <input type="radio" id="male" name="gender" value="male">
+                            <label for="male", value="남">&nbsp;&nbsp;남</label>
+                            <input type="radio" id="female" name="gender" value="female">
+                            <label for="female", value="여">&nbsp;&nbsp;여</label><br> -->
+                        </div>
+
+                        <!-- 좋아하는 연예인 입력 -->
+                        <label for="celebrity"><b>좋아하는 연예인</b></label>
+                        <input type="text" id="celebrity" name="celebrity"><br>
+
+                        <!-- 확인 버튼 -->
+                        <button type="submit" id="confirmButton subscribeButton"><b>확인</b></button> <!-- id를 openPopup로 변경 -->
+                </form>
             </div>
-
-            <!-- 좋아하는 연예인 입력 -->
-            <label for="celebrity">좋아하는 연예인</label>
-            <input type="text" id="celebrity" name="celebrity"><br>
-
-            <!-- 확인 버튼 -->
-            <button id="openPopup">확인</button> <!-- id를 openPopup로 변경 -->
+            
         </div>
     </div>
 

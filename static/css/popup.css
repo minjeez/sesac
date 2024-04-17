@@ -4,6 +4,7 @@
     box-sizing: border-box;
 }
 
+
 .popup {
     position: fixed;
     top: 50%;
@@ -11,42 +12,60 @@
     transform: translate(-50%, -50%);
     background-color: #fff;
     padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    width: 80%; /* 팝업의 가로 너비를 조정합니다. */
-    max-height: 80%; /* 팝업의 최대 세로 높이를 조정합니다. */
-    overflow-y: auto; /* 세로 스크롤이 필요할 때 스크롤 표시됩니다. */
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    width: 80%;
+    max-height: 80%;
+    overflow-y: auto;
 }
 
 .popup-content h2 {
     margin-top: 0;
+    margin-bottom: 5px; /* "사용자 정보 입력" 아래 여백 추가 */
+}
+
+.popup-content .separator {
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+}
+
+.popup-content .info-input { /* 사용자 정보 입력 영역 스타일링 */
+    margin-bottom: 20px; /* "사용자 정보 입력" 아래 여백 추가 */
 }
 
 .popup-content label {
     display: block;
-    margin-bottom: 10px; /* 여백을 더 넓혔습니다. */
+    margin-bottom: 15px;
+    margin-top: 15px; /* 새로 추가: 입력창 위쪽 마진 설정 */
 }
 
+.popup-content input[type="name"],
 .popup-content input[type="email"],
 .popup-content input[type="text"],
 .popup-content select {
     width: 100%;
     padding: 10px;
-    margin-bottom: 15px; 
+    margin-bottom: 15px;
     border: 1px solid #ccc;
     border-radius: 5px;
     box-sizing: border-box;
 }
 
+.gender-selection label {
+    margin-right: 20px; /* 원하는 만큼의 공백을 설정합니다. */
+}
+
 .popup-content button {
     width: 100%;
-    padding: 12px 0; 
-    background-color: #007bff;
+    padding: 12px 0;
+    background-color: #737aa5;
     color: #fff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
+    margin-top: 25px;
 }
 
 .popup-content button:hover {
@@ -55,14 +74,16 @@
 
 .popup-content .gender-selection {
     display: flex;
-    align-items: center; /* 수직 정렬 설정 */
+    align-items: center;
 }
 
 .popup-content .gender-selection label {
-    margin-right: 10px;
+    margin-right: 30px;
 }
 
 .popup-content .gender-selection button {
-    margin-top: 0; /* 기본적으로 적용되는 마진을 제거합니다. */
-    align-self: center; /* 수직 정렬 설정 */
+    margin-top: 0;
+    align-self: center;
 }
+
+

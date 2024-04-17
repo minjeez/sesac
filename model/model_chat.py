@@ -1,4 +1,4 @@
-import sys, os
+# import sys, os
 
 from dotenv import load_dotenv
 load_dotenv(verbose=True)
@@ -8,10 +8,10 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.vectorstores import Chroma
 from langchain.embeddings import OpenAIEmbeddings, CacheBackedEmbeddings
 from langchain.chat_models import ChatOpenAI # 채팅 모드 
-from langchain.chains import RetrievalQA
-from langchain.memory import ConversationBufferMemory
+# from langchain.chains import RetrievalQA
+# from langchain.memory import ConversationBufferMemory
 
-from langchain.vectorstores import FAISS
+# from langchain.vectorstores import FAISS
 from langchain.prompts import ChatPromptTemplate
 from langchain.schema.runnable import RunnablePassthrough, RunnableLambda
 from langchain.storage import LocalFileStore

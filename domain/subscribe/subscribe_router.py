@@ -15,21 +15,22 @@ def get_db():
     try:
         yield session
     finally:
-        session.close()
+        pass
+        # session.close()
 
 router = APIRouter()
 
 # 구독 정보 생성 엔드포인트
 # @app.post("/subscribe")
-@router.post("/")
-async def create_subscription(email: str = Form(...), 
-                                name: str = Form(...), 
+@router.post("/popup")
+async def create_subscription(name: str = Form(...),
+                                email: str = Form(...), 
                                 age: str = Form(...), 
                                 gender: str = Form(...), 
                                 favorite_celebrity: Optional[str] = Form(None), 
                                 db: Session = Depends(get_db)):
-    subscription_data = SubscriptionCreate(email=email, 
-                                            name=name, 
+    subscription_data = SubscriptionCreate(name=name,
+                                            email=email, 
                                             age=age, 
                                             gender=gender, 
                                             favorite_celebrity=favorite_celebrity)
