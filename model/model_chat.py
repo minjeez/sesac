@@ -1,20 +1,17 @@
-# import sys, os
-
 from dotenv import load_dotenv
 load_dotenv(verbose=True)
 
-from langchain.document_loaders import PyPDFLoader
-from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain.vectorstores import Chroma
-from langchain.embeddings import OpenAIEmbeddings, CacheBackedEmbeddings
-from langchain.chat_models import ChatOpenAI # 채팅 모드 
-# from langchain.chains import RetrievalQA
-# from langchain.memory import ConversationBufferMemory
-
-# from langchain.vectorstores import FAISS
-from langchain.prompts import ChatPromptTemplate
-from langchain.schema.runnable import RunnablePassthrough, RunnableLambda
+from langchain_text_splitters.character import RecursiveCharacterTextSplitter
 from langchain.storage import LocalFileStore
+from langchain_openai import OpenAIEmbeddings
+from langchain.embeddings.cache import CacheBackedEmbeddings
+
+from langchain_community.chat_models import ChatOpenAI
+from langchain_community.vectorstores import Chroma
+from langchain_community.document_loaders import PyPDFLoader
+
+from langchain_core.prompts.chat import ChatPromptTemplate
+from langchain_core.runnables.passthrough import RunnablePassthrough
 
 
 # ########

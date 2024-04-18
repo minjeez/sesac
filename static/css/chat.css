@@ -1,13 +1,6 @@
-.site-navbar .site-navbar-top {
-    border-bottom: 1px solid #f3f3f4;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    margin-bottom: 0px;
-}
-
 .sender-image {
-    width: 40px; /* 이미지 크기 조정 */
-    height: 40px; /* 이미지 크기 조정 */
+    width: 40px; 
+    height: 40px; 
     border-radius: 20px; /* 이미지를 원형으로 만듬 */
     margin-right: 10px; /* 이미지와 텍스트 사이의 간격 조정 */
 }
@@ -20,7 +13,7 @@
     text-align: left;
 }
 
-/* 메시지 컨테이너 내 요소들의 정렬을 위한 스타일 */
+
 .right-bubble, .left-bubble {
     display: flex;
     flex-direction: column;
@@ -31,7 +24,7 @@
     display: inline-block;
 }
 
-.container {
+.chatting-container {
     display: flex;
     align-items: flex-start;
     width: 100%; 
