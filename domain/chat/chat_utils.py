@@ -84,6 +84,7 @@ router = APIRouter()
 class CardInfo(BaseModel):
     cardPath: str
 
+# route_handler.py
 # 카드 정보를 받는 엔드포인트
 @router.post("/card-path")
 async def receive_card_info(card_info: CardInfo): # , websocket: WebSocket = None
@@ -98,6 +99,7 @@ async def receive_card_info(card_info: CardInfo): # , websocket: WebSocket = Non
     # client_id = "arcana"
     return {"message": "Card info received successfully"}
 
+# chat_websocket.py
 @router.websocket('/chatting')
 async def websocket_chatting(websocket: WebSocket):
     await websocket.accept()

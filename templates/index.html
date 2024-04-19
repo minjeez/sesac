@@ -50,7 +50,7 @@
               <div class="site-top-icons">
                 <ul>
                   <li><a href="#"><span class="icon icon-person"></span></a></li>
-                  <li><a href="#" id="openPopup"><span class="icon icon-heart-o"></span></a></li>
+                  <li><a href="#" id="openPopup" onclick="openPopup()" ><span class="icon icon-heart-o"></span></a></li>
                   <li>
                     <a href="/cart" class="site-cart">
                       <span class="icon icon-shopping_cart"></span>
@@ -336,7 +336,7 @@
             </div>
 
             <!-- 구독 버튼 누를시 토글 -->
-            <div class="block-7">
+            <!-- <div class="block-7">
               <label for="email_subscribe" class="footer-heading"><b>Subscribe</b></label>
             </div>
             <div class="form-group">
@@ -347,7 +347,7 @@
                 <label for="name">이름</label><br>
                 <input type="text" id="name" name="name"><br>
                 <label for="age">나이</label><br>
-                <!-- <input type="text" id="age" name="age"><br> -->
+                
                 <select id="age" name="age">
                   <option value="">나이 선택</option>
                   <option value="10대 미만">10대 미만</option>
@@ -368,7 +368,7 @@
                 <button type="submit" class="btn btn-sm btn-primary footer-heading"
                   id="subscribeButton"><b>구독하기</b></button>
               </form>
-            </div>
+            </div> -->
             <!-- 구독하기 버튼 -->
 
           </div>
@@ -392,7 +392,17 @@
   </div>
   </footer>
   </div>
+  <script>
+    function openPopup() {
+      const popupWidth = 600;
+      const popupHeight = 800;
+      const left = (screen.width - popupWidth) / 2;
+      const top = (screen.height - popupHeight) / 2;
 
+      window.open('popup', 'Popup Page', `width=${popupWidth},height=${popupHeight},left=${left},top=${top},scrollbars=yes,status=yes`);
+      
+    }
+  </script>
   <script src="../static/js/jquery-3.3.1.min.js"></script>
   <script src="../static/js/jquery-ui.js"></script>
   <script src="../static/js/popper.min.js"></script>

@@ -9,6 +9,12 @@ class SubscriptionCreate(BaseModel):
     gender: constr(pattern=r'^[남여]$') # 선택 사항이므로 추가적인 유효성 검사 규칙이 없음
     favorite_celebrity: Optional[str] = None
 
+    @validator('name')
+    def check_name(cls, value):
+        if len(value) == 0:
+            raise ValueError("1글자 이상 작성 해주세요.")
+        return value
+
     @validator('age')
     def check_age(cls, value):
         valid_ages = ['10대 미만', '20대', '30대', '40대', '50대 이상']

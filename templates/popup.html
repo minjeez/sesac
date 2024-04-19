@@ -16,15 +16,15 @@
             <div class="separator"></div> <!-- 회색 줄 추가 -->
                 
                 <div class="info-input"> <!-- 사용자 정보 입력 영역 -->
-                    <form action="#" method="post" id="subscriptionForm">
-                        <label for="name"><b>이름</b></label>
+                    <form action="/popup" method="post" id="subscriptionForm">
+                        <label for="name"><b>이름 (필수)</b></label>
                         <input type="text" id="name" name="name"><br>
                         <!-- 이메일 입력 -->
-                        <label for="email"><b>이메일</b></label>
+                        <label for="email"><b>이메일 (필수)</b></label>
                         <input type="email" id="email" name="email" required><br>
 
                         <!-- 나이 선택 -->
-                        <label for="age"><b>나이</b></label>
+                        <label for="age"><b>나이 (필수)</b></label>
                         <select id="age" name="age">
                             <option value="10대 미만">10대 미만</option>
                             <option value="10대">10대</option>
@@ -37,20 +37,15 @@
                         <!-- 성별 선택 -->
                         <div class="gender-selection">
                             
-                            <label for="gender"><b>성별</b></label>
-                            <select id="gender" name="gender">
-                                <option value="">성별 선택</option>
-                                <option value="남">남</option>
-                                <option value="여">여</option>
-                            </select><br>
-                            <!-- <input type="radio" id="male" name="gender" value="male">
+                            <label for="gender"><b>성별 (필수)</b></label>
+                            <input type="radio" id="gender" name="gender" value="남" checked>
                             <label for="male", value="남">&nbsp;&nbsp;남</label>
-                            <input type="radio" id="female" name="gender" value="female">
-                            <label for="female", value="여">&nbsp;&nbsp;여</label><br> -->
+                            <input type="radio" id="gender" name="gender" value="여">
+                            <label for="female", value="여">&nbsp;&nbsp;여</label><br>
                         </div>
 
                         <!-- 좋아하는 연예인 입력 -->
-                        <label for="celebrity"><b>좋아하는 연예인</b></label>
+                        <label for="celebrity"><b>좋아하는 연예인 (선택)</b></label>
                         <input type="text" id="celebrity" name="celebrity"><br>
 
                         <!-- 확인 버튼 -->

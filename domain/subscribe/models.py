@@ -13,8 +13,8 @@ class Subscription(Base):
 
     id = Column(Integer, primary_key=True, autoincrement=True)
     
-    email = Column(String, unique=True, nullable=False)
     name = Column(String, nullable=False)
+    email = Column(String, unique=True, nullable=False)
     age = Column(String, nullable=False)
     gender = Column(String, nullable=False)
     favorite_celebrity = Column(String, nullable=True)
