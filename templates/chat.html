@@ -104,10 +104,9 @@
           <div class="chatting-container">
             <div class="taro-container">
               <div class="taro-overlay"></div>
-              <!-- <div class="taro-img">
-
-              </div> -->
-              <img class="taro-image" src="../static/taro-img/devil.png" alt="taro Image">
+              <div class="taro-img">
+                <!-- <img class="taro-image" src="../static/taro-img/devil.png" alt="taro Image">   -->
+              </div>              
             </div>
             <div class="chat-container">
               <div class="chat-messages" id="chat-messages">
@@ -122,7 +121,26 @@
           </div>
         
     </body>
-    
+    <script>
+      // taro-img 컨테이너를 선택
+      const taroImgContainer = document.querySelector('.taro-img');
+      // 기존 이미지 내용을 비우기
+      taroImgContainer.innerHTML = '';
+
+      // imgPath.json 파일을 불러오기
+      fetch('../static/imgPath.json')
+        .then(response => response.json())  // 응답을 JSON 형태로 파싱
+        .then(data => {
+          console.log(data); 
+          const img = document.createElement('img');
+          img.classList.add('taro-image');
+          img.src = data.imgPath;
+          img.alt = 'taro Image';
+          taroImgContainer.appendChild(img);
+        })
+      .catch(error => console.error('Error loading the image path:', error));  // 에러 처리
+
+    </script>
     <script>
       var taroContainer = document.querySelector('.taro-container')
       var taroOverlay = document.querySelector('.taro-overlay')

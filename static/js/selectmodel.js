@@ -48,10 +48,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
             sessionStorage.setItem('selectedModel', model);
             
-            // 1초 후에 /firstGame?model=${model} 페이지로 이동합니다.
+            // 0.3초 후에 /firstGame?model=${model} 페이지로 이동합니다.
             setTimeout(() => {
                 window.location.href = `/firstGame?model=${model}`;
-            }, 1000);
+            }, 300);
         });
 
         // Add mouseenter event listener to play hover sound for the specific item

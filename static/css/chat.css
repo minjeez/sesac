@@ -30,24 +30,50 @@
     width: 100%; 
 }
 
-
+/* !!!!!!!!!!!!!!!!!!! 수정 해야할 부분!!!!!!!!!!!!!!!!!!!!! */
 .taro-image {
-    width: 100%; 
+    width: 96%; 
     margin: 50px auto;
-    padding: 20px;
-    /* border: 1px solid #ccc; */
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.chat-container {
-    width: 100%; /* 채팅창 크기 조절 */
-    margin: 50px auto;
+    margin-left: 2%;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
+
+.chat-container {
+    width: 95%;
+    margin: 50px auto;
+    margin-right: 1%;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* 세로로 길다면 이렇게 */
+/* !!!!!!!!!!!!!!!!!!! 수정 해야할 부분!!!!!!!!!!!!!!!!!!!!! */
+
+/* .taro-image {
+    width: 63%; 
+    height: 5%;
+    margin: 50px auto;
+    margin-left: 30%;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.chat-container {
+    width: 95%;
+    margin: 50px auto;
+    margin-right: 10%;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+} */
 
 .chat-messages {
     height: 400px;
