@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         // 하나라도 비어 있다면 폼 제출을 방지합니다.
         if (!isFormValid) {
-            alert('모든 필드를 채워주세요.');
+            alert('모든 필수 값을 채워주세요.');
             return; // 폼 제출을 중단합니다.
         }
 
@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // alert(`${data.name}님 구독이 완료되었습니다! 이제부터 새로운 소식을 받아보세요.`);
             const popupContent = `
             <div class="popup-content">
-                <h2>구독이 완료되었습니다!</h2>
+                <h2>${data.name}님 구독이 완료되었습니다!</h2>
                 <p>이제부터 새로운 소식을 받아보세요.</p>
                 <p>&nbsp;</p> <!-- 추가된 공백 -->
                 <button id="okButton">확인</button>

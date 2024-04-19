@@ -36,8 +36,8 @@
 
             <div class="col-6 col-md-4 order-2 order-md-1 site-search-icon text-left">
               <form action="" class="site-block-top-search">
-                <span class="icon icon-search2"></span>
-                <input type="text" class="form-control border-0" placeholder="Search">
+                <!-- <span class="icon icon-search2"></span>
+                <input type="text" class="form-control border-0" placeholder="Search"> -->
               </form>
             </div>
 
@@ -50,13 +50,13 @@
             <div class="col-6 col-md-4 order-3 order-md-3 text-right">
               <div class="site-top-icons">
                 <ul>
-                  <li><a href="#"><span class="icon icon-person"></span></a></li>
-                  <li><a href="#" id="openPopup"><span class="icon icon-heart-o"></span></a></li>
+                  <!-- <li><a href="#"><span class="icon icon-person"></span></a></li> -->
+                  <li><a href="#" id="openPopup" onclick="openPopup()"><span class="icon icon-heart-o"></span></a></li>
                   <li>
-                    <a href="/cart" class="site-cart">
+                    <!-- <a href="/cart" class="site-cart">
                       <span class="icon icon-shopping_cart"></span>
                       <span class="count">2</span>
-                    </a>
+                    </a> -->
                   </li>
                   <li class="d-inline-block d-md-none ml-md-0"><a href="#" class="site-menu-toggle js-menu-toggle"><span
                         class="icon-menu"></span></a></li>
@@ -143,4 +143,16 @@
           taroContainer.style = 'transform : perspective(350px) rotateY(0deg) rotateX(0deg)'
       })
     </script>
+    <script>
+      function openPopup() {
+        const popupWidth = 600;
+        const popupHeight = 800;
+        const left = (screen.width - popupWidth) / 2;
+        const top = (screen.height - popupHeight) / 2;
+  
+        window.open('popup', 'Popup Page', `width=${popupWidth},height=${popupHeight},left=${left},top=${top},scrollbars=yes,status=yes`);
+        
+      }
+    </script>
+    
 </html>
