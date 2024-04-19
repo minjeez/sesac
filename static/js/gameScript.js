@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const basePath = '../static/taro-img/';
     const cards = [
         'cup.png',
+        'death.png',
         'devil.png',
         'emperor.png',
         'empress.png',
@@ -24,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Mapping relative paths to absolute paths
     const finalCards = cards.map(card => basePath + card);
     // Now 'absolutePaths' contains the absolute URLs to your card images
-    console.log(finalCards); // Output for verification or further use
+    console.log(`gameScript : \n${finalCards}`); // Output for verification or further use
 
     const gameContainer = document.getElementById('game-container');
 
@@ -83,7 +84,7 @@ document.addEventListener('DOMContentLoaded', function () {
         // 카드 선택 후 카드 정보 chat_utils.py로 보내기.
         // console.log(imagePath);
         // WebSocket.send(JSON.stringify({"type": "img_path", imagePath: imagePath}));
-        fetch('/card-path', {
+        fetch('/cardPath', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

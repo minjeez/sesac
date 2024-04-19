@@ -30,12 +30,33 @@ document.addEventListener("DOMContentLoaded", function () {
         // Add click event listener to each "item" (existing functionality)
         item.addEventListener('click', function () {
             const model = item.dataset.model;
+
+            console.log(`seletModel page :\n${model}`);
+            // AJAX 요청으로 서버에 데이터 전송
+            fetch('/celebName', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ 
+                    celebText: model 
+                })
+            })
+            .then(response => response.json())
+            .then(data => console.log(data))
+            .catch(error => console.error('Error:', error));
+
             sessionStorage.setItem('selectedModel', model);
-            window.location.href = `/firstGame?model=${model}`;
+            
+            // 1초 후에 /firstGame?model=${model} 페이지로 이동합니다.
+            setTimeout(() => {
+                window.location.href = `/firstGame?model=${model}`;
+            }, 1000);
         });
 
         // Add mouseenter event listener to play hover sound for the specific item
         item.addEventListener('mouseenter', function () {
+            console.log(`hover된 연예인은 : ${itemName}`);
             playHoverSound(itemName);
         });
     });

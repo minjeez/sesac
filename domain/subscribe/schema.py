@@ -24,7 +24,7 @@ class SubscriptionCreate(BaseModel):
         # if not value.endswith('대'):
     
     @validator('gender')
-    def check_age(cls, value):
+    def check_gender(cls, value):
         if value not in ["남", "여"]:
             raise ValueError('성별은 "남" 또는 "여"여야 합니다.')
         return value

@@ -86,7 +86,7 @@ class CardInfo(BaseModel):
 
 # route_handler.py
 # 카드 정보를 받는 엔드포인트
-@router.post("/card-path")
+@router.post("/cardPath")
 async def receive_card_info(card_info: CardInfo): # , websocket: WebSocket = None
     # 카드 정보 처리
     # 예: 데이터베이스에 저장, 로그 출력 등
@@ -98,6 +98,39 @@ async def receive_card_info(card_info: CardInfo): # , websocket: WebSocket = Non
         f.write(json_data)
     # client_id = "arcana"
     return {"message": "Card info received successfully"}
+
+
+class celebInfo(BaseModel):
+    celebText: str
+
+# route_handler.py
+@router.post("/celebName")
+async def receive_celeb_info(celeb_info: celebInfo):
+    # 카드 정보 처리
+    # 예: 데이터베이스에 저장, 로그 출력 등
+    print(f"Received celeb info: \n{celeb_info.celebText}")
+    data = {"celebName" : celeb_info.celebText}
+    json_data = json.dumps(data)
+    # JSON 데이터를 파일에 저장
+    with open("./static/celebName.json", "w") as f:
+        f.write(json_data)
+    # client_id = "arcana"
+    return {"message": "celeb info received successfully"}
+
+
+
+def load_celebName():
+    import json
+
+    with open("./static/celebName.json", "r") as f:
+        celebName = json.loads(f.read())
+        # print(type(celebName))
+        if celebName['celebName'] == 'iu':
+            return 0
+        elif celebName['celebName'] == 'cha':
+            return 1
+        else:
+            return 2
 
 # chat_websocket.py
 @router.websocket('/chatting')
@@ -116,16 +149,20 @@ async def websocket_chatting(websocket: WebSocket):
 
             # 모델을 사용하여 챗봇 응답 생성
             celebrity = ["아이유", "차은우", "춘식이"]
-            reply = model_chat.answer2you(message, celebrity[0])
+
+            reply = model_chat.answer2you(message, celebrity[load_celebName()])
             
             # print(f"챗봇의 대답 : {reply}")
             
             # 클라이언트로 사용자의 메시지와 챗봇의 응답을 전송
             
-            await websocket.send_json({"message": reply, "sender": celebrity[0], "time": time})
+            await websocket.send_json({"message": reply, "sender": celebrity[load_celebName()], "time": time})
 
     except WebSocketDisconnect:
         print("webSocket dissconnet 입니다.")
+
+
+
 
 
 
