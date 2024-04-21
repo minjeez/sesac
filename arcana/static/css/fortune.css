@@ -1,0 +1,49 @@
+/* Fortune Box Styles */
+.fortune-box {
+    max-width: 80%;
+    width: auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    margin: 50px auto 30px; /* 위 여백을 추가하고 아래 여백을 줄입니다. */
+}
+
+.fortune-title {
+    font-size: 24px; /* 제목의 폰트 크기를 조정합니다. */
+    font-weight: bold; /* 제목을 굵게 표시합니다. */
+    margin-bottom: 30px; /* 제목과 운세 내용 사이의 여백을 조정합니다. */
+    text-align: center; /* 제목을 가운데 정렬합니다. */
+    color: #737aa5; /* 제목의 색상을 변경합니다. */
+    margin-top: 20px; /* 제목 위 여백을 추가합니다. */
+    transition: color 0.3s ease; /* 색상이 바뀌는 트랜지션 효과를 추가합니다. */
+}
+
+
+.fortune-title::after {
+    content: "";
+    display: block;
+    width: 50px;
+    height: 2px; /* 줄의 높이를 조정합니다. */
+    background-color: #CCC;
+    margin: 30px auto; /* 상하 여백을 조정합니다. */
+}
+
+#fortuneContent {
+    font-size: 16px; /* 운세 내용의 폰트 크기를 조정합니다. */
+    text-align: left; /* 운세 내용을 왼쪽 정렬합니다. */
+    color: #000; /* 운세 내용의 색상을 변경합니다. */
+    
+}
+
+.item-title {
+    font-weight: bold; /* '행운의 아이템' 글자를 굵게 표시합니다. */
+}
+
+.lucky-item {
+    margin-top: 20px;
+    font-weight: bold; /* '행운의 아이템' 문장을 굵게 표시합니다. */
+    color: #000; /* 행운의 아이템 문장 폰트 색상을 검은색으로 유지합니다. */
+}

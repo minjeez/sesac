@@ -7,7 +7,7 @@ from fastapi.staticfiles import StaticFiles
 from starlette.middleware.cors import CORSMiddleware
 
 import uvicorn
-from domain import about_router, cart_router, checkout_router, class_router, contact_router, counseling_router, goods_router, firstGame_router, thankyou_router, popup_router, selectmodel_router
+from domain import about_router, cart_router, checkout_router, class_router, contact_router, counseling_router, goods_router, firstGame_router, thankyou_router, popup_router, selectmodel_router, fortune_router
 from domain.chat import chat_router, chat_utils
 from domain.subscribe import subscribe_router
 
@@ -24,7 +24,7 @@ app.add_middleware(
     allow_headers=['*']
 )
 # router 디렉토리 설정
-routers = [about_router.router, cart_router.router, checkout_router.router, contact_router.router, class_router.router, goods_router.router, counseling_router.router, firstGame_router.router, thankyou_router.router, chat_router.router, subscribe_router.router, popup_router.router, chat_utils.router, selectmodel_router.router]
+routers = [about_router.router, cart_router.router, checkout_router.router, contact_router.router, class_router.router, goods_router.router, counseling_router.router, firstGame_router.router, thankyou_router.router, chat_router.router, subscribe_router.router, popup_router.router, chat_utils.router, selectmodel_router.router, fortune_router.router]
 for r in routers:
     app.include_router(r)
 
