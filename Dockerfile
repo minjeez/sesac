@@ -29,8 +29,6 @@ COPY arcana/requirements.txt /app/requirements.txt
 # 컨테이너 환경의 작업 디렉토리 설정
 WORKDIR /app
 
-# COPY arcana/.env /app/.env
-RUN cat env.txt > /app/.env
 
 RUN pip install -r requirements.txt
 
