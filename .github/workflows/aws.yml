@@ -91,13 +91,14 @@ jobs:
         IMAGE_REPO=${{ secrets.DOCKER_IMG }}
         ECR_REGISTRY=${{ secrets.ECR_REGISTRY }}
         docker build -t $IMAGE_REPO:$LATEST_TAG .
+        echo $IMAGE_REPO:$LATEST_TAG
         echo "docker images"
         docker images -a
         # github run numer
-        docker tag $IMAGE_REPO:$IMAGE_TAG $ECR_REGISTRY/$IMAGE_REPO:$IMAGE_TAG
-        docker push $ECR_REGISTRY/$IMAGE_REPO:$IMAGE_TAG
+        # docker tag $IMAGE_REPO:$IMAGE_TAG $ECR_REGISTRY/$IMAGE_REPO:$IMAGE_TAG
+        # docker push $ECR_REGISTRY/$IMAGE_REPO:$IMAGE_TAG
         # latest
-        docker tag $IMAGE_REPO:$IMAGE_TAG $ECR_REGISTRY/$IMAGE_REPO:$LATEST_TAG
+        docker tag $IMAGE_REPO:$LATEST_TAG $ECR_REGISTRY/$IMAGE_REPO:$LATEST_TAG
         docker push $ECR_REGISTRY/$IMAGE_REPO:$LATEST_TAG
         
         # docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
