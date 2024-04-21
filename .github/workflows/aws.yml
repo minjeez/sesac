@@ -85,15 +85,15 @@ jobs:
         # Build a docker container and
         # push it to ECR so that it can
         # be deployed to ECS.
-        # IMAGE_TAG=${{ github.run_number }}
-        IMAGE_TAG: ${{ github.sha }}
-        LATEST_TAG=${{ secrets.LATEST_TAG }}
+        # IMAGE_TAG: ${{ github.sha }}
+        IMAGE_TAG=${{ github.run_number }}
+        LATEST_TAG=latest
         IMAGE_REPO=${{ secrets.DOCKER_IMG }}
         ECR_REGISTRY=${{ secrets.ECR_REGISTRY }}
         docker build -t $IMAGE_REPO:$LATEST_TAG .
         # github run numer
-        # docker tag $IMAGE_REPO:$IMAGE_TAG $ECR_REGISTRY/$IMAGE_REPO:$IMAGE_TAG
-        # docker push $ECR_REGISTRY/$IMAGE_REPO:$IMAGE_TAG
+        docker tag $IMAGE_REPO:$IMAGE_TAG $ECR_REGISTRY/$IMAGE_REPO:$IMAGE_TAG
+        docker push $ECR_REGISTRY/$IMAGE_REPO:$IMAGE_TAG
         # latest
         docker tag $IMAGE_REPO:$IMAGE_TAG $ECR_REGISTRY/$IMAGE_REPO:$LATEST_TAG
         docker push $ECR_REGISTRY/$IMAGE_REPO:$LATEST_TAG
