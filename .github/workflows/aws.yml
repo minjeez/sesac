@@ -87,16 +87,17 @@ jobs:
         # be deployed to ECS.
         # IMAGE_TAG: ${{ github.sha }}
         IMAGE_TAG=${{ github.run_number }}
-        LATEST_TAG=latest
+        LATEST_TAG=${{ secrets.LATEST_TAG }}
         IMAGE_REPO=${{ secrets.DOCKER_IMG }}
         ECR_REGISTRY=${{ secrets.ECR_REGISTRY }}
+        REGISTRY_NAME=${{ secrets.REGISTRY_NAME }}
         
-        docker build -t arcana .
+        docker build -t $REGISTRY_NAME .
         echo "docker images"
         docker images -a
         
-        docker tag arcana:latest 654654288424.dkr.ecr.ap-northeast-2.amazonaws.com/arcana:latest
-        docker push 654654288424.dkr.ecr.ap-northeast-2.amazonaws.com/arcana:latest
+        docker tag $REGISTRY_NAME:$LATEST_TAG $ECR_REGISTRY
+        docker push $ECR_REGISTRY:$LATEST_TAG
         # docker build -t $IMAGE_REPO:$LATEST_TAG .
         # echo $IMAGE_REPO:$LATEST_TAG
         
