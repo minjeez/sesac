@@ -37,25 +37,6 @@ document.addEventListener('DOMContentLoaded', function() {
         var messageText = data.message; // JSON 데이터에서 메시지 텍스트를 가져옴
         var sender = data.sender; // 메시지의 발신자
         var time = new Date().toLocaleTimeString();
-        
-        // sendCardInfo();
-        // fetch('/send-card-info', {
-        //     method: 'POST',
-        //     headers: {
-        //         'Content-Type': 'application/json'
-        //     },
-        //     body: JSON.stringify({ cardPath: cardPath })
-        // })
-        //     .then(response => response.json())
-        //     .then(data => {
-        //         const taroImgContainer = document.querySelector('.taro-img');
-        //         taroImgContainer.innerHTML = '';
-
-        //         const img = document.createElement('img');
-        //         img.src = data.cardPath; // JSON에서 불러온 imgPath 값을 사용
-        //         taroImgContainer.appendChild(img);
-        //     })
-        //     .catch(error => console.error('Error:', error));
 
         if (sender === "나") {
             receiveMessage(messageText, 'right-bubble', time, sender);
@@ -124,11 +105,21 @@ document.addEventListener('DOMContentLoaded', function() {
         const timeElement = document.createElement('div');
         
         let senderImagePath;
+        console.log(sender);
+        let senderImg;
+        
         if (sender === "나") {
             senderImagePath = "../static/images/default.png";
             className = 'right-bubble';
         } else {
-            senderImagePath = `../static/celeb-img/${sender}.png`;
+            if (sender === "아이유") {
+                senderImg = "iu";
+            } else if (sender === "차은우") {
+                senderImg = "cha";
+            } else {
+                senderImg = "chun";
+            }
+            senderImagePath = `../static/celeb-img/${senderImg}.png`;
             className = 'left-bubble';
         }
         senderImageElement.src = senderImagePath;
