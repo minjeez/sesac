@@ -48,7 +48,6 @@ jobs:
     name: Build and Push Image to ECR
     runs-on: ubuntu-22.04
 
-
     steps:
     - name: Checkout
       uses: actions/checkout@v3
