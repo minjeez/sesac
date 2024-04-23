@@ -31,20 +31,20 @@ document.addEventListener("DOMContentLoaded", function () {
         item.addEventListener('click', function () {
             const model = item.dataset.model;
 
-            console.log(`seletModel page :\n${model}`);
-            // AJAX 요청으로 서버에 데이터 전송
-            fetch('/celebName', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ 
-                    celebText: model 
-                })
-            })
-            .then(response => response.json())
-            .then(data => console.log(data))
-            .catch(error => console.error('Error:', error));
+            // console.log(`seletModel page :\n${model}`);
+            // // AJAX 요청으로 서버에 데이터 전송
+            // fetch('/celebName', {
+            //     method: 'POST',
+            //     headers: {
+            //         'Content-Type': 'application/json'
+            //     },
+            //     body: JSON.stringify({ 
+            //         celebText: model 
+            //     })
+            // })
+            // .then(response => response.json())
+            // .then(data => console.log(data))
+            // .catch(error => console.error('Error:', error));
 
             sessionStorage.setItem('selectedModel', model);
             
