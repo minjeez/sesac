@@ -50,7 +50,7 @@
               <div class="site-top-icons">
                 <ul>
                   <!-- <li><a href="#"><span class="icon icon-person"></span></a></li> -->
-                  <li><a href="#" id="openPopup" onclick="openPopup()" ><span class="icon icon-heart-o"></span></a></li>
+                  <li><a href="#" id="openPopup" onclick="openPopup()"><span class="icon icon-bell-o"></span></a></li>
                   <li>
                     <!-- <a href="/cart" class="site-cart">
                       <span class="icon icon-shopping_cart"></span>
@@ -69,29 +69,11 @@
       <nav class="site-navigation text-right text-md-center" role="navigation">
         <div class="container">
           <ul class="site-menu js-clone-nav d-none d-md-block">
-            <li class="has-children active">
-              <a href="/fortune">FORTUNE</a>
-              <ul class="dropdown">
-                <li><a href="">오늘의 운세</a></li>
-                <li><a href="">구슬 속 이야기 🔮</a></li>
-                <li class="has-children">
-                  <a>챗봇 아르카나</a>
-                  <ul class="dropdown">
-                    <li><a href="#">소개</a></li>
-                    <li><a href="/selectmodel">대화하기</a></li>
-                  </ul>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <a href="/about">About</a>
-              <!-- <ul class="dropdown">
-              </ul> -->
-            </li>
-            <li><a href="/counseling">Counseling</a></li>
-            <li><a href="/class">CLASS</a></li>
-            <li><a href="/goods">GOODS</a></li>
-            <li><a href="/contact">Contact</a></li>
+            <li><a href="/about">소개</a></li>
+            <li><a href="/selectmodel">대화하기</a></li>
+            <li><a href="/fortune">오늘의 운세</a></li>
+            <li><a href="https://tidal-tile-dfe.notion.site/f642d017427f42c1a426c1f7de284876?pvs=4">타로&nbsp이야기</a></li>
+            <li><a href="/contact">고객지원</a></li>
           </ul>
         </div>
       </nav>
@@ -147,7 +129,7 @@
       </div>
     </div>
 
-    <div class="site-section site-blocks-2">
+    <!-- <div class="site-section site-blocks-2">
       <div class="container">
         <div class="row">
           <div class="col-sm-6 col-md-6 col-lg-4 mb-4 mb-lg-0" data-aos="fade" data-aos-delay="">
@@ -283,7 +265,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
 
     <footer class="site-footer border-top">
       <div class="container">
@@ -400,7 +382,7 @@
       const top = (screen.height - popupHeight) / 2;
 
       window.open('popup', 'Popup Page', `width=${popupWidth},height=${popupHeight},left=${left},top=${top},scrollbars=yes,status=yes`);
-      
+
     }
   </script>
   <script src="../static/js/jquery-3.3.1.min.js"></script>

@@ -51,7 +51,7 @@
               <div class="site-top-icons">
                 <ul>
                   <!-- <li><a href="#"><span class="icon icon-person"></span></a></li> -->
-                  <li><a href="#" id="openPopup" onclick="openPopup()"><span class="icon icon-heart-o"></span></a></li>
+                  <li><a href="#" id="openPopup" onclick="openPopup()"><span class="icon icon-bell-o"></span></a></li>
                   <li>
                     <!-- <a href="/cart" class="site-cart">
                       <span class="icon icon-shopping_cart"></span>
@@ -70,29 +70,11 @@
       <nav class="site-navigation text-right text-md-center" role="navigation">
         <div class="container">
           <ul class="site-menu js-clone-nav d-none d-md-block">
-            <li class="has-children active">
-              <a href="/fortune">FORTUNE</a>
-              <ul class="dropdown">
-                <li><a href="#">오늘의 운세</a></li>
-                <li><a href="#">구슬 속 이야기 🔮</a></li>
-                <li class="has-children">
-                  <a href="#">챗봇 아르카나</a>
-                  <ul class="dropdown">
-                    <li><a href="#">소개</a></li>
-                    <li><a href="/chat">대화하기</a></li>
-                  </ul>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <a href="/about">About</a>
-              <!-- <ul class="dropdown">
-              </ul> -->
-            </li>
-            <li><a href="/counseling">Counseling</a></li>
-            <li><a href="/class">CLASS</a></li>
-            <li><a href="/goods">GOODS</a></li>
-            <li><a href="/contact">Contact</a></li>
+            <li><a href="/about">소개</a></li>
+            <li><a href="/selectmodel">대화하기</a></li>
+            <li><a href="/fortune">오늘의 운세</a></li>
+            <li><a href="https://tidal-tile-dfe.notion.site/f642d017427f42c1a426c1f7de284876?pvs=4">타로&nbsp이야기</a></li>
+            <li><a href="/contact">고객지원</a></li>
           </ul>
         </div>
       </nav>
@@ -100,26 +82,26 @@
 
 
     <body>
-      
-          <div class="chatting-container">
-            <div class="taro-container">
-              <div class="taro-overlay"></div>
-              <div class="taro-img">
-                <!-- <img class="taro-image" src="../static/taro-img/devil.png" alt="taro Image">   -->
-              </div>              
-            </div>
-            <div class="chat-container">
-              <div class="chat-messages" id="chat-messages">
-                <!-- Messages will be displayed here -->
-              
-              </div>
-              <div class="message-input-container">
-                <input type="text" id="message-input" placeholder="Type your message...">
-                <button id="send-button">Send</button>
-              </div>
-            </div>
+
+      <div class="chatting-container">
+        <div class="taro-container">
+          <div class="taro-overlay"></div>
+          <div class="taro-img">
+            <!-- <img class="taro-image" src="../static/taro-img/devil.png" alt="taro Image">   -->
           </div>
-        
+        </div>
+        <div class="chat-container">
+          <div class="chat-messages" id="chat-messages">
+            <!-- Messages will be displayed here -->
+
+          </div>
+          <div class="message-input-container">
+            <input type="text" id="message-input" placeholder="Type your message...">
+            <button id="send-button">Send</button>
+          </div>
+        </div>
+      </div>
+
     </body>
     <script>
       // taro-img 컨테이너를 선택
@@ -127,38 +109,51 @@
       // 기존 이미지 내용을 비우기
       taroImgContainer.innerHTML = '';
 
-      // imgPath.json 파일을 불러오기
-      fetch('../static/imgPath.json')
-        .then(response => response.json())  // 응답을 JSON 형태로 파싱
-        .then(data => {
-          console.log(data); 
-          const img = document.createElement('img');
-          img.classList.add('taro-image');
-          img.src = data.imgPath;
-          img.alt = 'taro Image';
-          taroImgContainer.appendChild(img);
-        })
-      .catch(error => console.error('Error loading the image path:', error));  // 에러 처리
+      // Retrieve the stored imagePath from sessionStorage
+      const selectedCardPath = sessionStorage.getItem('selectedCardPath');
 
+      // Use the retrieved imagePath as needed (e.g., displaying an image)
+      if (selectedCardPath) {
+        const img = document.createElement('img');
+        img.classList.add('taro-image');
+        img.src = selectedCardPath;
+        img.alt = 'taro Image';
+        taroImgContainer.appendChild(img); // Append the image to the body or container
+      } else {
+        console.error('No selected card path found in sessionStorage.');
+      };
+
+      // // imgPath.json 파일을 불러오기
+      // fetch('../static/imgPath.json')
+      //   .then(response => response.json())  // 응답을 JSON 형태로 파싱
+      //   .then(data => {
+      //     console.log(data);
+      //     const img = document.createElement('img');
+      //     img.classList.add('taro-image');
+      //     img.src = data.imgPath;
+      //     img.alt = 'taro Image';
+      //     taroImgContainer.appendChild(img);
+      //   })
+      //   .catch(error => console.error('Error loading the image path:', error));  // 에러 처리
     </script>
     <script>
       var taroContainer = document.querySelector('.taro-container')
       var taroOverlay = document.querySelector('.taro-overlay')
 
-      taroContainer.addEventListener('mousemove', function(e){
-          var x = e.offsetX
-          var y = e.offsetY
-          var rotateY = -1/10 * x + 20
-          var rotateX = 4/40 * y - 20
+      taroContainer.addEventListener('mousemove', function (e) {
+        var x = e.offsetX
+        var y = e.offsetY
+        var rotateY = -1 / 10 * x + 20
+        var rotateX = 4 / 40 * y - 20
 
-          taroOverlay.style = `background-position : ${x/5 + y/5}%; filter : opacity(${x/200}) brightness(1.2)`
+        taroOverlay.style = `background-position : ${x / 5 + y / 5}%; filter : opacity(${x / 200}) brightness(1.2)`
 
-          taroContainer.style = `transform : perspective(350px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`
+        taroContainer.style = `transform : perspective(350px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`
       })
 
-      taroContainer.addEventListener('mouseout', function(){
+      taroContainer.addEventListener('mouseout', function () {
         taroOverlay.style = 'filter : opacity(0)'
-          taroContainer.style = 'transform : perspective(350px) rotateY(0deg) rotateX(0deg)'
+        taroContainer.style = 'transform : perspective(350px) rotateY(0deg) rotateX(0deg)'
       })
     </script>
     <script>
@@ -167,10 +162,10 @@
         const popupHeight = 800;
         const left = (screen.width - popupWidth) / 2;
         const top = (screen.height - popupHeight) / 2;
-  
+
         window.open('popup', 'Popup Page', `width=${popupWidth},height=${popupHeight},left=${left},top=${top},scrollbars=yes,status=yes`);
-        
-      }
+
+      };
     </script>
-    
+
 </html>

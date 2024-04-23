@@ -7,12 +7,13 @@ from langchain_openai import OpenAIEmbeddings
 from langchain.embeddings.cache import CacheBackedEmbeddings
 
 from langchain_community.chat_models import ChatOpenAI
-from langchain_community.vectorstores import Chroma
+from langchain_community.vectorstores import Chroma, FAISS
 from langchain_community.document_loaders import PyPDFLoader
 
 from langchain_core.prompts.chat import ChatPromptTemplate
 from langchain_core.runnables.passthrough import RunnablePassthrough
 
+from langchain.callbacks.base import BaseCallbackHandler
 
 # ########
 # # Loader
@@ -39,14 +40,24 @@ cached_embeddings = CacheBackedEmbeddings.from_bytes_store(embeddings_model, cac
 #################
 # Vector store & Retriever
 ##################
-# vectorstore = FAISS.from_documents(texts, cached_embeddings)
-vectorstore = Chroma.from_documents(texts, cached_embeddings)
-
-retriever = vectorstore.as_retriever()
+FAISS_DB_INDEX="./arcana/model/db_faiss"
+vectorstore = FAISS.from_documents(texts, cached_embeddings)
+# vectorstore = Chroma.from_documents(texts, cached_embeddings)
+vectorstore.save_local(folder_path=FAISS_DB_INDEX)
 
 # db = Chroma.from_documents(texts, embeddings_model) # persist_directory="/chroma"
 
+class StreamCallback(BaseCallbackHandler):
+    def on_llm_new_token(self, token: str, **kwargs):
+        print(token, end="", flush=True)
+
 def answer2you(input_message, celebrity):
+    vectorstore = FAISS.load_local(
+    FAISS_DB_INDEX,  # 로드할 FAISS 인덱스의 디렉토리 이름
+    cached_embeddings,  # 임베딩 정보를 제공
+    allow_dangerous_deserialization=True,  # 역직렬화를 허용하는 옵션
+)
+    retriever = vectorstore.as_retriever()
 
     celebrity_chatbot = {
         "iu" : "ft:gpt-3.5-turbo-1106:personal::9BurxOzE", 
@@ -62,7 +73,7 @@ def answer2you(input_message, celebrity):
 
 
     llm = ChatOpenAI(model_name=celebrity_chatbot[celebrity], temperature=0.2,  
-                    streaming=True)
+                    streaming=True, callbacks=[StreamCallback()])
     
     prompt = ChatPromptTemplate.from_messages(
         [

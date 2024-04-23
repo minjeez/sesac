@@ -31,7 +31,7 @@
 }
 
 /* !!!!!!!!!!!!!!!!!!! 수정 해야할 부분!!!!!!!!!!!!!!!!!!!!! */
-.taro-image {
+/* .taro-image {
     width: 96%; 
     margin: 50px auto;
     margin-left: 2%;
@@ -49,12 +49,12 @@
     border: 1px solid #ccc;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
+} */
 
 /* 세로로 길다면 이렇게 */
 /* !!!!!!!!!!!!!!!!!!! 수정 해야할 부분!!!!!!!!!!!!!!!!!!!!! */
 
-/* .taro-image {
+.taro-image {
     width: 63%; 
     height: 5%;
     margin: 50px auto;
@@ -73,7 +73,7 @@
     border: 1px solid #ccc;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-} */
+}
 
 .chat-messages {
     height: 400px;
