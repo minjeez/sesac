@@ -50,7 +50,8 @@ document.addEventListener("DOMContentLoaded", function () {
             
             // 0.3초 후에 /firstGame?model=${model} 페이지로 이동합니다.
             setTimeout(() => {
-                window.location.href = `/firstGame?model=${model}`;
+                window.location.href = "/firstGame";
+                // `/firstGame?model=${model}`;
             }, 300);
         });
 
